@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineAddCircleOutline, MdOutlineDoDisturb } from "react-icons/md";
 import { generateSearchString } from "@/utils/generateSearchString";
+import Button from "./button";
 
 const Form = () => {
   const [terms, setTerms] = useState<string[]>([]);
@@ -33,7 +34,7 @@ const Form = () => {
 
   return (
     <div className="px-4 py-8">
-      <form className="flex flex-col" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
         <TermsContext value={terms}>
           <Select
             icon={<MdOutlineAddCircleOutline />}
@@ -50,12 +51,7 @@ const Form = () => {
             onChange={(x) => setExcludeList(x)}
           />
         </TermsContext>
-        <button type="submit">
-          <div className="flex justify-center items-center gap-2 bg-blue text-white px-4 py-2 rounded-full text-lg">
-            <FaSearch />
-            <p>Pesquisar!</p>
-          </div>
-        </button>
+        <Button icon={<FaSearch />} text="Buscar" type="submit" />
       </form>
     </div>
   );

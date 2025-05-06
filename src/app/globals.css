@@ -3,6 +3,7 @@
 @theme {
   --color-gray: #d1d5db;
   --color-blue: #0a66c2;
+  --color-blue-dark: #085099;
 }
 
 input {
