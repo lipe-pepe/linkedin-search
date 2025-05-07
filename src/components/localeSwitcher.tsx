@@ -38,22 +38,6 @@ const LocaleSwitcher = () => {
       ...base,
       color: theme === "dark" ? "#ffffff" : "#1f2937",
     }),
-    multiValue: (base: any) => ({
-      ...base,
-      backgroundColor: theme === "dark" ? "#374151" : "#e5e7eb",
-    }),
-    multiValueLabel: (base: any) => ({
-      ...base,
-      color: theme === "dark" ? "var(--color-neutral)" : "#1f2937",
-    }),
-    multiValueRemove: (base: any) => ({
-      ...base,
-      color: theme === "dark" ? "#9ca3af" : "#6b7280",
-      ":hover": {
-        backgroundColor: theme === "dark" ? "#4b5563" : "#d1d5db",
-        color: theme === "dark" ? "#ffffff" : "#111827",
-      },
-    }),
   };
 
   const router = useRouter();
