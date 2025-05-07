@@ -8,13 +8,13 @@ export default async function Home() {
   return (
     <div className="mt-2 mx-6 flex flex-col justify-center items-center gap-12">
       <Header />
-      <h1>{t("title")}</h1>
       <div className="flex flex-wrap items-center gap-2">
         <div className="text-primary">
           <FaBriefcase />
         </div>
-        <p className="text-2xl font-medium">Job Searcher for LinkedIn®</p>
+        <p className="text-2xl font-medium">{t("title")}</p>
       </div>
+      <p>{t("about")}</p>
       <Form />
     </div>
   );

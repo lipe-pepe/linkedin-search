@@ -1,6 +1,24 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "title": "Job Searcher for LinkedIn®",
+    "about": "LinkedIn® has a little-known feature: search using logical operators. Many recommended jobs on the platform are sponsored and highly competitive. Use this tool to refine your searches and find the opportunities that truly match you."
+  },
+  "Form": {
+    "mandatory": {
+      "title": "Required",
+      "description": "Select required terms. Only results that necessarily contain these terms will appear.",
+      "placeholder": "Type a term..."
+    },
+    "include": {
+      "title": "Optional",
+      "description": "Select optional terms. Results may or may not contain these terms.",
+      "placeholder": "Type a term..."
+    },
+    "exclude": {
+      "title": "Exclude",
+      "description": "Select terms to exclude. Only results that do not contain any of these terms will appear.",
+      "placeholder": "Type a term..."
+    },
+    "button": "Search"
   }
 }

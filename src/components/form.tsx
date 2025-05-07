@@ -11,8 +11,11 @@ import {
 } from "react-icons/md";
 import { generateSearchString } from "@/utils/generateSearchString";
 import Button from "./button";
+import { useTranslations } from "next-intl";
 
 const Form = () => {
+  const t = useTranslations("Form");
+
   const [terms, setTerms] = useState<string[]>([]);
 
   const [mandatoryList, setMandatoryList] = useState<string[]>([]);
@@ -46,28 +49,28 @@ const Form = () => {
       <TermsContext value={terms}>
         <Select
           icon={<MdOutlineCheckBox />}
-          title="Obrigatórios"
-          description="Selecione termos obrigatórios. Só aparecerão resultados que necessariamente contêm esses termos"
-          placeholder="Digite o termo..."
+          title={t("mandatory.title")}
+          description={t("mandatory.description")}
+          placeholder={t("mandatory.placeholder")}
           onChange={(x) => setMandatoryList(x)}
         />
         <Select
           icon={<MdOutlineAddCircleOutline />}
-          title="Opcionais"
-          description="Selecione termos opcionais. Os resultados podem ou não conter esses termos"
-          placeholder="Digite o termo..."
+          title={t("include.title")}
+          description={t("include.description")}
+          placeholder={t("include.placeholder")}
           onChange={(x) => setIncludeList(x)}
         />
         <Select
           icon={<MdOutlineDoDisturb />}
-          title="Excluir"
-          description="Selecione termos para excluir. Só aparecerão resultados que não contêm nenhum desses termos"
-          placeholder="Digite o termo..."
+          title={t("exclude.title")}
+          description={t("exclude.description")}
+          placeholder={t("exclude.placeholder")}
           onChange={(x) => setExcludeList(x)}
         />
       </TermsContext>
       <div className="h-8" />
-      <Button icon={<FaSearch />} text="Buscar" type="submit" />
+      <Button icon={<FaSearch />} text={t("button")} type="submit" />
     </form>
   );
 };

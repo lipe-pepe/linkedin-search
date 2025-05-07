@@ -1,6 +1,24 @@
 {
   "HomePage": {
-    "title": "Olá mundo!",
-    "about": "Go to the about page"
+    "title": "Busca de Vagas no LinkedIn®",
+    "about": "O LinkedIn® possui um recurso pouco conhecido: a busca com operadores lógicos. Muitas das vagas recomendadas na plataforma são patrocinadas e altamente concorridas. Use esta ferramenta para refinar suas buscas e encontrar as oportunidades que realmente combinam com você."
+  },
+  "Form": {
+    "mandatory": {
+      "title": "Obrigatórios",
+      "description": "Selecione termos obrigatórios. Só aparecerão resultados que necessariamente contêm esses termos",
+      "placeholder": "Digite o termo..."
+    },
+    "include": {
+      "title": "Opcionais",
+      "description": "Selecione termos opcionais. Os resultados podem ou não conter esses termos",
+      "placeholder": "Digite o termo..."
+    },
+    "exclude": {
+      "title": "Excluir",
+      "description": "Selecione termos para excluir. Só aparecerão resultados que não contêm nenhum desses termos",
+      "placeholder": "Digite o termo..."
+    },
+    "button": "Buscar"
   }
 }
