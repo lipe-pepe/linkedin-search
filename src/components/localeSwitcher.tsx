@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useRouter } from "@/i18n/navigation";
 import { Locale, useLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import Select from "react-select";
+import { useTheme } from "next-themes";
 
 interface Option {
   value: string;
@@ -11,6 +13,49 @@ interface Option {
 }
 
 const LocaleSwitcher = () => {
+  const { theme } = useTheme();
+
+  const customStyles = {
+    control: (base: any) => ({
+      ...base,
+      backgroundColor: "var(--color-background)",
+      border: "none",
+    }),
+    menu: (base: any) => ({
+      ...base,
+      backgroundColor: "var(--color-background)",
+    }),
+    option: (base: any, state: { isFocused: any }) => ({
+      ...base,
+      backgroundColor: state.isFocused
+        ? theme === "dark"
+          ? "#374151"
+          : "#e5e7eb"
+        : "var(--color-background)",
+      color: theme === "dark" ? "#ffffff" : "#1f2937",
+    }),
+    singleValue: (base: any) => ({
+      ...base,
+      color: theme === "dark" ? "#ffffff" : "#1f2937",
+    }),
+    multiValue: (base: any) => ({
+      ...base,
+      backgroundColor: theme === "dark" ? "#374151" : "#e5e7eb",
+    }),
+    multiValueLabel: (base: any) => ({
+      ...base,
+      color: theme === "dark" ? "var(--color-neutral)" : "#1f2937",
+    }),
+    multiValueRemove: (base: any) => ({
+      ...base,
+      color: theme === "dark" ? "#9ca3af" : "#6b7280",
+      ":hover": {
+        backgroundColor: theme === "dark" ? "#4b5563" : "#d1d5db",
+        color: theme === "dark" ? "#ffffff" : "#111827",
+      },
+    }),
+  };
+
   const router = useRouter();
   const locale = useLocale();
 
@@ -33,13 +78,7 @@ const LocaleSwitcher = () => {
       defaultValue={options.find((opt) => opt.value === locale)}
       onChange={handleChange}
       isSearchable={false}
-      styles={{
-        control: (baseStyles) => ({
-          ...baseStyles,
-          border: "none",
-          backgroundColor: "transparent",
-        }),
-      }}
+      styles={customStyles}
     />
   );
 };

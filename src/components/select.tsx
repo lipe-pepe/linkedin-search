@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { ReactNode, useContext, useEffect, useState } from "react";
 import TermsContext from "@/contexts/termsContext";
 import CreatableSelect from "react-select/creatable";
+import { useTheme } from "next-themes";
 
 interface Option {
   label: string;
@@ -24,6 +26,8 @@ const Select: React.FC<SelectProps> = ({
   placeholder,
   onChange,
 }: SelectProps) => {
+  const { theme } = useTheme();
+
   // useContext fala para o React que esse componente quer ler o contexto TermsContext.
   // Mas para o React saber de onde pegar o TermsContext, ele tem que ser provido em algum componente
   // acima na árvore de componentes (nesse caso em Form)
@@ -31,6 +35,46 @@ const Select: React.FC<SelectProps> = ({
 
   const [options, setOptions] = useState<Option[]>([]);
   const [value, setValue] = React.useState<readonly Option[]>([]);
+
+  const customStyles = {
+    control: (base: any) => ({
+      ...base,
+      backgroundColor: "var(--color-background)",
+    }),
+    menu: (base: any) => ({
+      ...base,
+      backgroundColor: "var(--color-background)",
+    }),
+    option: (base: any, state: { isFocused: any }) => ({
+      ...base,
+      backgroundColor: state.isFocused
+        ? theme === "dark"
+          ? "#374151"
+          : "#e5e7eb"
+        : "var(--color-background)",
+      color: theme === "dark" ? "#ffffff" : "#1f2937",
+    }),
+    singleValue: (base: any) => ({
+      ...base,
+      color: theme === "dark" ? "#ffffff" : "#1f2937",
+    }),
+    multiValue: (base: any) => ({
+      ...base,
+      backgroundColor: theme === "dark" ? "#374151" : "#e5e7eb",
+    }),
+    multiValueLabel: (base: any) => ({
+      ...base,
+      color: theme === "dark" ? "var(--color-neutral)" : "#1f2937",
+    }),
+    multiValueRemove: (base: any) => ({
+      ...base,
+      color: theme === "dark" ? "#9ca3af" : "#6b7280",
+      ":hover": {
+        backgroundColor: theme === "dark" ? "#4b5563" : "#d1d5db",
+        color: theme === "dark" ? "#ffffff" : "#111827",
+      },
+    }),
+  };
 
   // Atualiza os termos selecionados
   useEffect(() => {
@@ -62,6 +106,7 @@ const Select: React.FC<SelectProps> = ({
         placeholder={placeholder}
         options={options}
         onChange={(newValue) => setValue(newValue)}
+        styles={customStyles}
       />
     </div>
   );

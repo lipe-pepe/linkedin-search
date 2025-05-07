@@ -21,10 +21,10 @@ export default async function Home() {
         <p>{t("about")}</p>
         <Form />
       </div>
-      <footer className="w-full max-w-4xl px-4 sm:px-6 lg:px-12 py-4 text-center text-sm text-gray-600">
+      <footer className="w-full max-w-4xl px-4 sm:px-6 lg:px-12 py-4 text-center text-sm text-[var(--color-neutral)]">
         {t("developed")}{" "}
         <Link
-          className="underline"
+          className="underline "
           target="_blank"
           href={"https://felipepepe.dev"}
         >
