@@ -8,10 +8,10 @@ export default async function Home() {
   const t = await getTranslations("HomePage");
   return (
     <main className="min-h-screen flex flex-col items-center">
-      <div className="w-full max-w-4xl px-6 sm:px-8 lg:px-12 pt-4">
+      <div className="w-full max-w-3xl px-6 sm:px-8 lg:px-12 pt-4">
         <Header />
       </div>
-      <div className="flex-1 w-full max-w-4xl px-4 sm:px-6 lg:px-12 flex flex-col items-center justify-center gap-12">
+      <div className="flex-1 w-full max-w-3xl px-4 sm:px-6 lg:px-12 flex flex-col items-center justify-center gap-12">
         <div className="flex flex-wrap items-center gap-2">
           <div className="text-primary">
             <FaBriefcase />
@@ -21,7 +21,7 @@ export default async function Home() {
         <p>{t("about")}</p>
         <Form />
       </div>
-      <footer className="w-full max-w-4xl px-4 sm:px-6 lg:px-12 py-4 text-center text-sm text-[var(--color-neutral)]">
+      <footer className="w-full max-w-3xl px-4 sm:px-6 lg:px-12 py-4 text-center text-sm text-[var(--color-neutral)]">
         {t("developed")}{" "}
         <Link
           className="underline "

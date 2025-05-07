@@ -6,19 +6,19 @@
   },
   "Form": {
     "mandatory": {
-      "title": "Required",
-      "description": "Select required terms. Only results that necessarily contain these terms will appear.",
-      "placeholder": "Type a term..."
+      "title": "Mandatory",
+      "description": "Only results that necessarily contain all of these terms will appear. Leave empty to not use.",
+      "placeholder": "Select..."
     },
     "include": {
       "title": "Optional",
-      "description": "Select optional terms. Results may or may not contain these terms.",
-      "placeholder": "Type a term..."
+      "description": "Results must contain at least one of these terms. Leave empty to not use.",
+      "placeholder": "Select..."
     },
     "exclude": {
       "title": "Exclude",
-      "description": "Select terms to exclude. Only results that do not contain any of these terms will appear.",
-      "placeholder": "Type a term..."
+      "description": "Only results that do not contain any of these terms will appear. Leave empty to not use.",
+      "placeholder": "Select..."
     },
     "button": "Search"
   }
