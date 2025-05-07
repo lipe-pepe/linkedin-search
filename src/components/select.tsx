@@ -94,11 +94,11 @@ const Select: React.FC<SelectProps> = ({
       />
       <div className="w-full relative">
         {filtered.length > 0 && (
-          <ul className="w-full absolute bg-white border-1 border-gray p-1 rounded-lg">
+          <ul className="w-full absolute bg-white border-1 border-[var(--color-neutral)] p-1 rounded-lg">
             {filtered?.map((option, index) => (
               <li
                 key={`${option}-${index}`}
-                className="rounded-md px-2 cursor-pointer hover:bg-gray"
+                className="rounded-md px-2 cursor-pointer hover:bg-[var(--color-neutral)]"
                 onClick={() => selectTerm(option)}
               >
                 {option}

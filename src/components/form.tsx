@@ -15,6 +15,7 @@ import Button from "./button";
 const Form = () => {
   const [terms, setTerms] = useState<string[]>([]);
 
+  const [mandatoryList, setMandatoryList] = useState<string[]>([]);
   const [includeList, setIncludeList] = useState<string[]>([]);
   const [excludeList, setExcludeList] = useState<string[]>([]);
 
@@ -27,7 +28,11 @@ const Form = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Evita o reload da página
-    const searchString = generateSearchString(includeList, excludeList);
+    const searchString = generateSearchString(
+      mandatoryList,
+      includeList,
+      excludeList
+    );
 
     // Abre nova aba com a URL
     window.open(
@@ -37,14 +42,14 @@ const Form = () => {
   };
 
   return (
-    <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
       <TermsContext value={terms}>
         <Select
           icon={<MdOutlineCheckBox />}
           title="Obrigatórios"
           description="Selecione termos obrigatórios. Só aparecerão resultados que necessariamente contêm esses termos"
           placeholder="Digite o termo..."
-          onChange={(x) => setIncludeList(x)}
+          onChange={(x) => setMandatoryList(x)}
         />
         <Select
           icon={<MdOutlineAddCircleOutline />}
@@ -61,6 +66,7 @@ const Form = () => {
           onChange={(x) => setExcludeList(x)}
         />
       </TermsContext>
+      <div className="h-8" />
       <Button icon={<FaSearch />} text="Buscar" type="submit" />
     </form>
   );

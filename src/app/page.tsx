@@ -4,7 +4,7 @@ import { FaBriefcase } from "react-icons/fa";
 
 export default async function Home() {
   return (
-    <div className="my-12 mx-8 flex flex-col justify-center">
+    <div className="my-12 mx-8 flex flex-col justify-center items-center gap-12">
       <div className="fixed top-0 left-0">
         <ThemeToggle />
       </div>
