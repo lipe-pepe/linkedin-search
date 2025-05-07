@@ -2,7 +2,7 @@
 
 import TermsContext from "@/contexts/termsContext";
 import Select from "./select";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import {
   MdOutlineAddCircleOutline,
@@ -30,6 +30,18 @@ const Form = () => {
       .then((data) => setTerms(data));
   }, [locale]);
 
+  const handleMandatoryChange = useCallback((val: string[]) => {
+    setMandatoryList(val);
+  }, []);
+
+  const handleIncludeChange = useCallback((val: string[]) => {
+    setIncludeList(val);
+  }, []);
+
+  const handleExcludeChange = useCallback((val: string[]) => {
+    setExcludeList(val);
+  }, []);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Evita o reload da página
     const searchString = generateSearchString(
@@ -53,21 +65,21 @@ const Form = () => {
           title={t("mandatory.title")}
           description={t("mandatory.description")}
           placeholder={t("mandatory.placeholder")}
-          onChange={(x) => setMandatoryList(x)}
+          onChange={handleMandatoryChange}
         />
         <Select
           icon={<MdOutlineAddCircleOutline />}
           title={t("include.title")}
           description={t("include.description")}
           placeholder={t("include.placeholder")}
-          onChange={(x) => setIncludeList(x)}
+          onChange={handleIncludeChange}
         />
         <Select
           icon={<MdOutlineDoDisturb />}
           title={t("exclude.title")}
           description={t("exclude.description")}
           placeholder={t("exclude.placeholder")}
-          onChange={(x) => setExcludeList(x)}
+          onChange={handleExcludeChange}
         />
       </TermsContext>
       <div className="h-8" />

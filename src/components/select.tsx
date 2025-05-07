@@ -2,14 +2,12 @@
 
 import React, { ReactNode, useContext, useEffect, useState } from "react";
 import TermsContext from "@/contexts/termsContext";
-import { MdClose } from "react-icons/md";
+import CreatableSelect from "react-select/creatable";
 
-const substringMatches = (string: string, substring: string) => {
-  const lowerStr = string.toLowerCase();
-  const lowerSub = substring.toLowerCase();
-
-  return lowerStr.startsWith(lowerSub) || lowerStr.includes(" " + lowerSub);
-};
+interface Option {
+  label: string;
+  value: string;
+}
 
 interface SelectProps {
   icon: ReactNode;
@@ -31,41 +29,24 @@ const Select: React.FC<SelectProps> = ({
   // acima na árvore de componentes (nesse caso em Form)
   const terms = useContext(TermsContext);
 
-  const [input, setInput] = useState<string>("");
-  const [filtered, setFiltered] = useState<string[]>([]);
-  const [selected, setSelected] = useState<string[]>([]);
+  const [options, setOptions] = useState<Option[]>([]);
+  const [value, setValue] = React.useState<readonly Option[]>([]);
 
-  const handleInputChange = (value: string) => {
-    setInput(value);
-
-    if (value === "") {
-      setFiltered([]);
-      return;
-    }
-
-    const search = value.toLowerCase();
-    // O resultado serão os termos encontrados pela busca que ainda não estejam selecionados.
-    const result = terms
-      .filter((t) => substringMatches(t, search) && !selected.includes(t))
-      .slice(0, 10);
-    setFiltered(result);
-  };
-
-  const selectTerm = (term: string) => {
-    setSelected((prev) => [...prev, term]);
-
-    // Clears filtered
-    setFiltered([]);
-    setInput("");
-  };
-
-  const removeItem = (term: string) => {
-    setSelected((prev) => prev.filter((t) => t !== term));
-  };
+  // Atualiza os termos selecionados
+  useEffect(() => {
+    const selectedTerms = value.map((item) => item.value);
+    onChange(selectedTerms);
+  }, [onChange, value]);
 
   useEffect(() => {
-    onChange(selected);
-  }, [onChange, selected]);
+    setOptions(
+      terms
+        .map((t) => {
+          return { value: t, label: t };
+        })
+        .slice(0, 10)
+    );
+  }, [terms]);
 
   return (
     <div className="my-2 flex flex-col items-start justify-center gap-2">
@@ -74,53 +55,14 @@ const Select: React.FC<SelectProps> = ({
         <p className="text-lg font-medium">{title}</p>
       </div>
       <p className="text-sm">{description}</p>
-      <input
-        className="text-sm border-1 border-[var(--color-neutral)] rounded-md px-3 py-2 w-full"
-        type="text"
+      <CreatableSelect
+        className="w-full"
+        isMulti
+        isClearable
         placeholder={placeholder}
-        onChange={(e) => {
-          handleInputChange(e.target.value);
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            const newTerm = input.trim();
-            if (newTerm && !selected.includes(newTerm)) {
-              selectTerm(newTerm);
-            }
-          }
-        }}
-        value={input}
+        options={options}
+        onChange={(newValue) => setValue(newValue)}
       />
-      <div className="w-full relative">
-        {filtered.length > 0 && (
-          <ul className="w-full absolute bg-white border-1 border-[var(--color-neutral)] p-1 rounded-lg">
-            {filtered?.map((option, index) => (
-              <li
-                key={`${option}-${index}`}
-                className="rounded-md px-2 cursor-pointer hover:bg-[var(--color-neutral)]"
-                onClick={() => selectTerm(option)}
-              >
-                {option}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        {selected.map((term, index) => (
-          <div
-            key={`${term}-${index}`}
-            className="border-gray-400 border-1 rounded-full px-2 inline-flex items-center gap-2 hover:border-red-700 hover:text-red-700 cursor-pointer"
-            onClick={() => removeItem(term)}
-          >
-            <p className="text-sm">{term}</p>
-
-            <MdClose />
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
