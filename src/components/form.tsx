@@ -58,7 +58,7 @@ const Form = () => {
   };
 
   return (
-    <form className="flex bg-amber-200 flex-col gap-2" onSubmit={handleSubmit}>
+    <form className="flex flex-col items-center gap-2" onSubmit={handleSubmit}>
       <TermsContext value={terms}>
         <Select
           icon={<MdOutlineCheckBox />}

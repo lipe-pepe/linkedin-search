@@ -10,8 +10,8 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ text, icon, type }: ButtonProps) => {
   return (
-    <button type={type}>
-      <div className="cursor-pointer flex justify-center items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-lg hover:bg-blue-dark">
+    <button className="w-full max-w-64" type={type}>
+      <div className="cursor-pointer flex justify-center items-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white px-4 py-3 rounded-full text-lg">
         {icon}
         <p className="font-medium">{text}</p>
       </div>

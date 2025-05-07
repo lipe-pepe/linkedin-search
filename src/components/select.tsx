@@ -49,7 +49,7 @@ const Select: React.FC<SelectProps> = ({
   }, [terms]);
 
   return (
-    <div className="my-2 flex flex-col items-start justify-center gap-2">
+    <div className="w-full my-2 flex flex-col items-start justify-center gap-2">
       <div className="flex items-center gap-2">
         {icon}
         <p className="text-lg font-medium">{title}</p>
