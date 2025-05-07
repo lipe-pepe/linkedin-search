@@ -11,10 +11,11 @@ import {
 } from "react-icons/md";
 import { generateSearchString } from "@/utils/generateSearchString";
 import Button from "./button";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const Form = () => {
   const t = useTranslations("Form");
+  const locale = useLocale();
 
   const [terms, setTerms] = useState<string[]>([]);
 
@@ -24,10 +25,10 @@ const Form = () => {
 
   // Fetches the terms
   useEffect(() => {
-    fetch("/terms.json")
+    fetch(`/terms/${locale}.json`)
       .then((res) => res.json())
       .then((data) => setTerms(data));
-  }, []);
+  }, [locale]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Evita o reload da página
