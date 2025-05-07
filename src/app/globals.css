@@ -1,16 +1,49 @@
 @import "tailwindcss";
 
-@theme {
-  --color-gray: #d1d5db;
-  --color-blue: #0a66c2;
-  --color-blue-dark: #085099;
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tema claro */
+:root {
+  --color-primary: #3b82f6;
+  --color-secondary: #0ea5e9;
+  --color-neutral: #6b7280;
+  --color-background: #f9fafb;
 }
 
-input {
-  border: 1px solid #d1d5db; /* gray-300 */
-  border-radius: 0.375rem; /* rounded-md */
-  padding: 0.5rem 0.75rem; /* px-3 py-2 */
-  width: 100%;
-  font-size: 0.875rem; /* text-sm */
-  outline: none;
+/* Tema escuro */
+.dark {
+  --color-primary: #60a5fa;
+  --color-secondary: #38bdf8;
+  --color-neutral: #d1d5db;
+  --color-background: #111827;
+}
+
+/* Tailwind-like utility classes */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+.bg-neutral {
+  background-color: var(--color-neutral);
+}
+.bg-background {
+  background-color: var(--color-background);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+.text-secondary {
+  color: var(--color-secondary);
+}
+.text-neutral {
+  color: var(--color-neutral);
+}
+
+button,
+div,
+p {
+  transition: background-color 0.2s ease, color 0.3s ease;
 }

@@ -11,7 +11,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ text, icon, type }: ButtonProps) => {
   return (
     <button type={type}>
-      <div className="cursor-pointer flex justify-center items-center gap-2 bg-blue text-white px-4 py-2 rounded-full text-lg transition-colors duration-200 hover:bg-blue-dark">
+      <div className="cursor-pointer flex justify-center items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-lg hover:bg-blue-dark">
         {icon}
         <p className="font-medium">{text}</p>
       </div>

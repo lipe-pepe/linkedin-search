@@ -37,34 +37,32 @@ const Form = () => {
   };
 
   return (
-    <div className="px-4 py-8">
-      <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
-        <TermsContext value={terms}>
-          <Select
-            icon={<MdOutlineCheckBox />}
-            title="Obrigatórios"
-            description="Selecione termos obrigatórios. Só aparecerão resultados que necessariamente contêm esses termos"
-            placeholder="Digite o termo..."
-            onChange={(x) => setIncludeList(x)}
-          />
-          <Select
-            icon={<MdOutlineAddCircleOutline />}
-            title="Opcionais"
-            description="Selecione termos opcionais. Os resultados podem ou não conter esses termos"
-            placeholder="Digite o termo..."
-            onChange={(x) => setIncludeList(x)}
-          />
-          <Select
-            icon={<MdOutlineDoDisturb />}
-            title="Excluir"
-            description="Selecione termos para excluir. Só aparecerão resultados que não contêm nenhum desses termos"
-            placeholder="Digite o termo..."
-            onChange={(x) => setExcludeList(x)}
-          />
-        </TermsContext>
-        <Button icon={<FaSearch />} text="Buscar" type="submit" />
-      </form>
-    </div>
+    <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+      <TermsContext value={terms}>
+        <Select
+          icon={<MdOutlineCheckBox />}
+          title="Obrigatórios"
+          description="Selecione termos obrigatórios. Só aparecerão resultados que necessariamente contêm esses termos"
+          placeholder="Digite o termo..."
+          onChange={(x) => setIncludeList(x)}
+        />
+        <Select
+          icon={<MdOutlineAddCircleOutline />}
+          title="Opcionais"
+          description="Selecione termos opcionais. Os resultados podem ou não conter esses termos"
+          placeholder="Digite o termo..."
+          onChange={(x) => setIncludeList(x)}
+        />
+        <Select
+          icon={<MdOutlineDoDisturb />}
+          title="Excluir"
+          description="Selecione termos para excluir. Só aparecerão resultados que não contêm nenhum desses termos"
+          placeholder="Digite o termo..."
+          onChange={(x) => setExcludeList(x)}
+        />
+      </TermsContext>
+      <Button icon={<FaSearch />} text="Buscar" type="submit" />
+    </form>
   );
 };
 

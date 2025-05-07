@@ -75,6 +75,7 @@ const Select: React.FC<SelectProps> = ({
       </div>
       <p className="text-sm">{description}</p>
       <input
+        className="text-sm border-1 border-[var(--color-neutral)] rounded-md px-3 py-2 w-full"
         type="text"
         placeholder={placeholder}
         onChange={(e) => {
@@ -97,7 +98,7 @@ const Select: React.FC<SelectProps> = ({
             {filtered?.map((option, index) => (
               <li
                 key={`${option}-${index}`}
-                className="rounded-md px-2 cursor-pointer hover:bg-gray transition-colors duration-100"
+                className="rounded-md px-2 cursor-pointer hover:bg-gray"
                 onClick={() => selectTerm(option)}
               >
                 {option}
@@ -111,7 +112,7 @@ const Select: React.FC<SelectProps> = ({
         {selected.map((term, index) => (
           <div
             key={`${term}-${index}`}
-            className="border-gray-400 border-1 rounded-full px-2 inline-flex items-center gap-2 hover:border-red-700 hover:text-red-700 cursor-pointer transition-colors duration-200"
+            className="border-gray-400 border-1 rounded-full px-2 inline-flex items-center gap-2 hover:border-red-700 hover:text-red-700 cursor-pointer"
             onClick={() => removeItem(term)}
           >
             <p className="text-sm">{term}</p>
