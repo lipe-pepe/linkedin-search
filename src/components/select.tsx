@@ -34,6 +34,7 @@ const Select: React.FC<SelectProps> = ({
   const terms = useContext(TermsContext);
 
   const [options, setOptions] = useState<Option[]>([]);
+  const [inputValue, setInputValue] = useState("");
   const [value, setValue] = React.useState<readonly Option[]>([]);
 
   const customStyles = {
@@ -76,6 +77,13 @@ const Select: React.FC<SelectProps> = ({
     }),
   };
 
+  useEffect(() => {
+    const filteredTerms = terms
+      .filter((t) => t.toLowerCase().includes(inputValue.toLowerCase()))
+      .slice(0, 10); // ainda limita a 10 resultados
+    setOptions(filteredTerms.map((t) => ({ value: t, label: t })));
+  }, [terms, inputValue]);
+
   // Atualiza os termos selecionados
   useEffect(() => {
     const selectedTerms = value.map((item) => item.value);
@@ -105,6 +113,7 @@ const Select: React.FC<SelectProps> = ({
         isClearable
         placeholder={placeholder}
         options={options}
+        onInputChange={(value) => setInputValue(value)}
         onChange={(newValue) => setValue(newValue)}
         styles={customStyles}
       />
