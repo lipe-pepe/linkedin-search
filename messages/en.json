@@ -1,7 +1,8 @@
 {
   "HomePage": {
     "title": "Job Searcher for LinkedIn®",
-    "about": "LinkedIn® has a little-known feature: search using logical operators. Many recommended jobs on the platform are sponsored and highly competitive. Use this tool to refine your searches and find the opportunities that truly match you."
+    "about": "LinkedIn® has a little-known feature: search using logical operators. Many recommended jobs on the platform are sponsored and highly competitive. Use this tool to refine your searches and find the opportunities that truly match you.",
+    "developed": "Developed by"
   },
   "Form": {
     "mandatory": {

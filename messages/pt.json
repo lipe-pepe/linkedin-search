@@ -1,7 +1,8 @@
 {
   "HomePage": {
     "title": "Busca de Vagas no LinkedIn®",
-    "about": "O LinkedIn® possui um recurso pouco conhecido: a busca com operadores lógicos. Muitas das vagas recomendadas na plataforma são patrocinadas e altamente concorridas. Use esta ferramenta para refinar suas buscas e encontrar as oportunidades que realmente combinam com você."
+    "about": "O LinkedIn® possui um recurso pouco conhecido: a busca com operadores lógicos. Muitas das vagas recomendadas na plataforma são patrocinadas e altamente concorridas. Use esta ferramenta para refinar suas buscas e encontrar as oportunidades que realmente combinam com você.",
+    "developed": "Desenvolvido por"
   },
   "Form": {
     "mandatory": {
