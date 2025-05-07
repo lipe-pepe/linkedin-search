@@ -7,11 +7,14 @@ const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
   return (
     <div
-      className="p-2 cursor-pointer text-[var(--color-neutral)]"
+      className="cursor-pointer text-[var(--color-neutral)] h-6 w-6 flex justify-center items-center"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      <LuSun className="absolute h-6 w-6 scale-100 dark:scale-0" />
-      <LuMoon className="absolute h-6 w-6 scale-0 dark:scale-100" />
+      {theme === "light" ? (
+        <LuSun className="size-full" />
+      ) : (
+        <LuMoon className="size-full" />
+      )}
     </div>
   );
 };

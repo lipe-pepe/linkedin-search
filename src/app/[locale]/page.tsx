@@ -1,16 +1,14 @@
 import Form from "@/components/form";
-import ThemeToggle from "@/components/themeToggle";
 import { FaBriefcase } from "react-icons/fa";
 import { getTranslations } from "next-intl/server";
+import Header from "@/components/header";
 
 export default async function Home() {
   const t = await getTranslations("HomePage");
   return (
-    <div className="my-12 mx-8 flex flex-col justify-center items-center gap-12">
+    <div className="mt-2 mx-6 flex flex-col justify-center items-center gap-12">
+      <Header />
       <h1>{t("title")}</h1>
-      <div className="fixed top-0 left-0">
-        <ThemeToggle />
-      </div>
       <div className="flex flex-wrap items-center gap-2">
         <div className="text-primary">
           <FaBriefcase />
