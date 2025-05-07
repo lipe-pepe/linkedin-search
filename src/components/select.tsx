@@ -93,11 +93,11 @@ const Select: React.FC<SelectProps> = ({
       />
       <div className="w-full relative">
         {filtered.length > 0 && (
-          <ul className="absolute bg-white border-1 border-gray px-3 py-1 rounded-lg">
+          <ul className="w-full absolute bg-white border-1 border-gray p-1 rounded-lg">
             {filtered?.map((option, index) => (
               <li
                 key={`${option}-${index}`}
-                className="cursor-pointer hover:font-bold"
+                className="rounded-md px-2 cursor-pointer hover:bg-gray transition-colors duration-100"
                 onClick={() => selectTerm(option)}
               >
                 {option}
@@ -111,7 +111,7 @@ const Select: React.FC<SelectProps> = ({
         {selected.map((term, index) => (
           <div
             key={`${term}-${index}`}
-            className="border-gray-400 border-1 rounded-full px-2 inline-flex items-center gap-2 hover:bg-red-700 hover:text-white hover:border-white cursor-pointer"
+            className="border-gray-400 border-1 rounded-full px-2 inline-flex items-center gap-2 hover:border-red-700 hover:text-red-700 cursor-pointer transition-colors duration-200"
             onClick={() => removeItem(term)}
           >
             <p className="text-sm">{term}</p>

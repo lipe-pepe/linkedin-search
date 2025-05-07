@@ -4,7 +4,11 @@ import TermsContext from "@/contexts/termsContext";
 import Select from "./select";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { MdOutlineAddCircleOutline, MdOutlineDoDisturb } from "react-icons/md";
+import {
+  MdOutlineAddCircleOutline,
+  MdOutlineCheckBox,
+  MdOutlineDoDisturb,
+} from "react-icons/md";
 import { generateSearchString } from "@/utils/generateSearchString";
 import Button from "./button";
 
@@ -37,16 +41,23 @@ const Form = () => {
       <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
         <TermsContext value={terms}>
           <Select
+            icon={<MdOutlineCheckBox />}
+            title="Obrigatórios"
+            description="Selecione termos obrigatórios. Só aparecerão resultados que necessariamente contêm esses termos"
+            placeholder="Digite o termo..."
+            onChange={(x) => setIncludeList(x)}
+          />
+          <Select
             icon={<MdOutlineAddCircleOutline />}
-            title="Incluir"
-            description="Selecione termos que podem aparecer nos resultados da busca"
+            title="Opcionais"
+            description="Selecione termos opcionais. Os resultados podem ou não conter esses termos"
             placeholder="Digite o termo..."
             onChange={(x) => setIncludeList(x)}
           />
           <Select
             icon={<MdOutlineDoDisturb />}
             title="Excluir"
-            description="Selecione termos que não podem aparecer nos resultados da busca"
+            description="Selecione termos para excluir. Só aparecerão resultados que não contêm nenhum desses termos"
             placeholder="Digite o termo..."
             onChange={(x) => setExcludeList(x)}
           />
