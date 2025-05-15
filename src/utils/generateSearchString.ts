@@ -17,15 +17,19 @@ export function generateSearchString(
 ) {
   let string = "";
 
-  string += joinList(mandatoryList, "AND");
+  const hasMandatory = mandatoryList.length > 0;
+  const hasInclude = includeList.length > 0;
+  const hasExclude = excludeList.length > 0;
 
-  if (includeList.length > 0) {
-    string += "AND";
+  if (hasMandatory) string += joinList(mandatoryList, "AND");
+
+  if (hasInclude) {
+    if (hasMandatory) string += "AND";
     string += joinList(includeList, "OR");
   }
 
-  if (excludeList.length > 0) {
-    string += "AND%20NOT";
+  if (hasExclude) {
+    if (hasMandatory || hasInclude) string += "AND%20NOT";
     string += joinList(excludeList, "OR");
   }
 
