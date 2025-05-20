@@ -17,6 +17,7 @@ interface SelectProps {
   description: string;
   placeholder: string;
   onChange: (value: string[]) => void;
+  storageItem: string;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -25,8 +26,15 @@ const Select: React.FC<SelectProps> = ({
   description,
   placeholder,
   onChange,
+  storageItem,
 }: SelectProps) => {
   const { theme } = useTheme();
+
+  const savedValue = localStorage.getItem(storageItem);
+  const initialValue =
+    savedValue != null
+      ? JSON.parse(savedValue).map((t: string) => ({ value: t, label: t }))
+      : [];
 
   // useContext fala para o React que esse componente quer ler o contexto TermsContext.
   // Mas para o React saber de onde pegar o TermsContext, ele tem que ser provido em algum componente
@@ -35,7 +43,7 @@ const Select: React.FC<SelectProps> = ({
 
   const [options, setOptions] = useState<Option[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const [value, setValue] = React.useState<readonly Option[]>([]);
+  const [value, setValue] = React.useState<readonly Option[]>(initialValue);
 
   const customStyles = {
     control: (base: any) => ({
@@ -116,6 +124,7 @@ const Select: React.FC<SelectProps> = ({
         onInputChange={(value) => setInputValue(value)}
         onChange={(newValue) => setValue(newValue)}
         styles={customStyles}
+        value={value}
       />
     </div>
   );

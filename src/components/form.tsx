@@ -44,6 +44,11 @@ const Form = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Evita o reload da página
+
+    localStorage.setItem("mandatory-list", JSON.stringify(mandatoryList));
+    localStorage.setItem("include-list", JSON.stringify(includeList));
+    localStorage.setItem("exclude-list", JSON.stringify(excludeList));
+
     const searchString = generateSearchString(
       mandatoryList,
       includeList,
@@ -69,6 +74,7 @@ const Form = () => {
           description={t("mandatory.description")}
           placeholder={t("mandatory.placeholder")}
           onChange={handleMandatoryChange}
+          storageItem="mandatory-list"
         />
         <Select
           icon={<MdOutlineAddCircleOutline />}
@@ -76,6 +82,7 @@ const Form = () => {
           description={t("include.description")}
           placeholder={t("include.placeholder")}
           onChange={handleIncludeChange}
+          storageItem="include-list"
         />
         <Select
           icon={<MdOutlineDoDisturb />}
@@ -83,6 +90,7 @@ const Form = () => {
           description={t("exclude.description")}
           placeholder={t("exclude.placeholder")}
           onChange={handleExcludeChange}
+          storageItem="exclude-list"
         />
       </TermsContext>
       <div className="h-8" />
