@@ -50,6 +50,10 @@ const Select: React.FC<SelectProps> = ({
       ...base,
       backgroundColor: "var(--color-background)",
     }),
+    input: (base: any) => ({
+      ...base,
+      color: theme === "dark" ? "#ffffff" : "#1f2937",
+    }),
     menu: (base: any) => ({
       ...base,
       backgroundColor: "var(--color-background)",
