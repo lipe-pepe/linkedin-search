@@ -12,13 +12,21 @@ import {
 import { generateSearchString } from "@/utils/generateSearchString";
 import Button from "./button";
 import { useLocale, useTranslations } from "next-intl";
+import Radio from "./radio";
 
 const Form = () => {
   const t = useTranslations("Form");
+
+  const pageOptions = [
+    { label: t("page.option1"), value: "jobs" },
+    { label: t("page.option2"), value: "posts" },
+  ];
+
   const locale = useLocale();
 
   const [terms, setTerms] = useState<string[]>([]);
 
+  const [page, setPage] = useState<string>(pageOptions[0].value);
   const [mandatoryList, setMandatoryList] = useState<string[]>([]);
   const [includeList, setIncludeList] = useState<string[]>([]);
   const [excludeList, setExcludeList] = useState<string[]>([]);
@@ -42,6 +50,10 @@ const Form = () => {
     setExcludeList(val);
   }, []);
 
+  const handlePageChange = useCallback((val: string) => {
+    setPage(val);
+  }, []);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Evita o reload da página
 
@@ -56,10 +68,17 @@ const Form = () => {
     );
 
     // Abre nova aba com a URL
-    window.open(
-      `https://www.linkedin.com/jobs/search/?keywords=${searchString}`,
-      "_blank"
-    );
+    if (page === "jobs") {
+      window.open(
+        `https://www.linkedin.com/jobs/search/?keywords=${searchString}`,
+        "_blank"
+      );
+    } else if (page === "posts") {
+      window.open(
+        `https://www.linkedin.com/search/results/content/?keywords=${searchString}`,
+        "_blank"
+      );
+    }
   };
 
   return (
@@ -67,6 +86,16 @@ const Form = () => {
       className="flex flex-col w-full items-center gap-2"
       onSubmit={handleSubmit}
     >
+      <div className="w-full mb-6">
+        <Radio
+          icon={<FaSearch />}
+          title={t("page.title")}
+          description={t("page.description")}
+          options={pageOptions}
+          defaultOption={pageOptions[0]}
+          onChange={handlePageChange}
+        />
+      </div>
       <TermsContext value={terms}>
         <Select
           icon={<MdOutlineCheckBox />}

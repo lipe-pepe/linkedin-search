@@ -20,6 +20,12 @@
       "description": "Only results that do not contain any of these terms will appear. Leave empty to not use.",
       "placeholder": "Select..."
     },
+    "page": {
+      "title": "Page",
+      "description": "Jobs are posted on the official job page or in posts from companies and recruiters. Posts allow you to apply by contacting the recruiter directly.",
+      "option1": "Search in jobs",
+      "option2": "Search in posts"
+    },
     "button": "Search"
   }
 }

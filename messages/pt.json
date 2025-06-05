@@ -20,6 +20,12 @@
       "description": "Só aparecerão resultados que não contêm nenhum desses termos. Deixe vazio para não usar.",
       "placeholder": "Selecione..."
     },
+    "page": {
+      "title": "Página",
+      "description": "Vagas são anunciadas na página oficial de vagas ou em publicações de empresas e recrutadores. As publicações permitem uma candidatura com contato direto com o recrutador.",
+      "option1": "Buscar em vagas",
+      "option2": "Buscar em publicações"
+    },
     "button": "Buscar"
   }
 }
