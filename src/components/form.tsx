@@ -3,7 +3,7 @@
 import TermsContext from "@/contexts/termsContext";
 import Select from "./select";
 import { useCallback, useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaLightbulb, FaSearch } from "react-icons/fa";
 import {
   MdOutlineAddCircleOutline,
   MdOutlineCheckBox,
@@ -13,6 +13,7 @@ import { generateSearchString } from "@/utils/generateSearchString";
 import Button from "./button";
 import { useLocale, useTranslations } from "next-intl";
 import Radio from "./radio";
+import Accordion from "./accordion";
 
 const Form = () => {
   const t = useTranslations("Form");
@@ -122,7 +123,11 @@ const Form = () => {
           storageItem="exclude-list"
         />
       </TermsContext>
-      <div className="h-8" />
+      <div className="my-4">
+        <Accordion icon={<FaLightbulb />} title={t("tip_title")}>
+          <p className=" text-[var(--color-neutral)] ">{t("tip_text")}</p>
+        </Accordion>
+      </div>
       <Button icon={<FaSearch />} text={t("button")} type="submit" />
     </form>
   );

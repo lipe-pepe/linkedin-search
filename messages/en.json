@@ -26,6 +26,8 @@
       "option1": "Search in jobs",
       "option2": "Search in posts"
     },
+    "tip_title": "Tip",
+    "tip_text": "Also use LinkedIn®'s native filters when searching, such as Date Posted and Experience Level. Your search will be even more accurate!",
     "button": "Search"
   }
 }

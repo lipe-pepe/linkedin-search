@@ -12,7 +12,7 @@ export default async function Home() {
         <Header />
       </div>
       <div className="flex-1 w-full max-w-3xl px-4 sm:px-6 lg:px-12 flex flex-col items-center justify-center gap-12">
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 mt-6 md:mt-0">
           <div className="text-primary">
             <FaBriefcase />
           </div>

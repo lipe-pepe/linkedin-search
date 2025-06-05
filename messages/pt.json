@@ -26,6 +26,8 @@
       "option1": "Buscar em vagas",
       "option2": "Buscar em publicações"
     },
+    "tip_title": "Dica",
+    "tip_text": "Use também os filtros nativos do LinkedIn® quando estiver buscando, como a Data de Anúncio e o Nível de Experiência. Sua busca será ainda mais certeira!",
     "button": "Buscar"
   }
 }
